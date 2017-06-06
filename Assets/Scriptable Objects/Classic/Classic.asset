@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e7151fa50f44b3680313d5265641b9, type: 3}
+  m_Name: Classic
+  m_EditorClassIdentifier: 
+  songSets:
+  - easy: {fileID: 11400000, guid: 4ae12c3b26a7e493683c33dc2ea1889e, type: 2}
+    hard: {fileID: 11400000, guid: 17a5b0eba3c3b4a2a93eff9318fc24f0, type: 2}
+  - easy: {fileID: 11400000, guid: 6cd6dc176783341de9c64c26074b5400, type: 2}
+    hard: {fileID: 11400000, guid: 5450c33ece0b74f5d850116a8582cd15, type: 2}
+  - easy: {fileID: 11400000, guid: 4734f250c66a14438ab369d314e9b068, type: 2}
+    hard: {fileID: 11400000, guid: cc85c07ac292c40419c628cc4066f388, type: 2}
+  - easy: {fileID: 11400000, guid: 8cddf07ae655a4086bea4187a93088a1, type: 2}
+    hard: {fileID: 11400000, guid: 993ae07cda32348e99614e685e55e338, type: 2}
+  - easy: {fileID: 11400000, guid: 57e3e214e6cda4e67ae38a41d7f5a843, type: 2}
+    hard: {fileID: 11400000, guid: 5457cc45960534c58beed7593ba5b5a0, type: 2}

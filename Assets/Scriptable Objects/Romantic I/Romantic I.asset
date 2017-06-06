@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e7151fa50f44b3680313d5265641b9, type: 3}
+  m_Name: Romantic I
+  m_EditorClassIdentifier: 
+  songSets:
+  - easy: {fileID: 11400000, guid: 41d53631ae6db41f4b09baf2a7922b55, type: 2}
+    hard: {fileID: 11400000, guid: a682708bfbd8e485c9e790ce2e589884, type: 2}
+  - easy: {fileID: 11400000, guid: 3728e622d740e456db8516265305f871, type: 2}
+    hard: {fileID: 11400000, guid: 2fee7956a0a4f4b8c8ee12bad7c3cfea, type: 2}
+  - easy: {fileID: 11400000, guid: 1327ee55aa82c48faad39fee53b47dbe, type: 2}
+    hard: {fileID: 11400000, guid: 81c6340ff6ecd400d8fab6bb8355e703, type: 2}
+  - easy: {fileID: 11400000, guid: 198cc96171f8141ffbd84d927dcefc3e, type: 2}
+    hard: {fileID: 11400000, guid: 855ea68fbda784616b120e66cbcaa725, type: 2}
+  - easy: {fileID: 11400000, guid: 0b2af01013b18431b92b7bc422e0d73d, type: 2}
+    hard: {fileID: 11400000, guid: 49dd2f31eecd44649a28f2f28a081ecb, type: 2}
