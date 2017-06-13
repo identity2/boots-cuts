@@ -7,9 +7,17 @@ using UnityEngine.SceneManagement;
 public class PlayingUIController : MonoBehaviour 
 {
 	//frame & avatar
+	public CharacterImageSet[] characterImageSets;
 	public Image frame;
 	public Image avatar;
 	public Color[] frameColors;
+	public Color frameFailedColor;
+	private CharacterImageSet currCharacterImage;
+	private Coroutine changeImageCoroutine = null;
+	private const float PopAnimationCoefficient = 0.35f;
+	private float lastbeat;
+	private const float PopAnimationScale = 1.25f;
+	private const float ImageChangeDuration = 0.2f;
 
 	//title
 	public GameObject title;
@@ -76,26 +84,34 @@ public class PlayingUIController : MonoBehaviour
 		//get the title
 		titleText.text = SongInfoMessenger.Instance.currentSong.songTitle;
 
+		//set the corredponding character image set
+		currCharacterImage = characterImageSets[SongInfoMessenger.Instance.characterIndex];
+
+		// Set the initial avatar image.
+		avatar.sprite = currCharacterImage.normalImage;
+
+		lastbeat = 0f;
+
 		//register to events
 		Conductor.beatOnHitEvent += BeatOnHit;
-		PlayerInputControl.inputtedEvent += PlayerInputted;
 		Conductor.songCompletedEvent += SongCompleted;
+	}
+
+	void Update()
+	{
+		// Perform Pop Animation every beat.
+		if (Conductor.songposition > lastbeat + Conductor.crotchet)
+		{
+			StartCoroutine(PopAvatarCoroutine());
+			lastbeat += Conductor.crotchet;
+		}
 	}
 
 	void OnDestroy()
 	{
 		//unregister from events
 		Conductor.beatOnHitEvent -= BeatOnHit;
-		PlayerInputControl.inputtedEvent -= PlayerInputted;
 		Conductor.songCompletedEvent -= SongCompleted;
-	}
-
-	//called by event
-	void PlayerInputted(int trackNumber)
-	{
-		//frame change color
-		frame.color = frameColors[trackNumber];
-		
 	}
 
 	//called by event
@@ -108,6 +124,12 @@ public class PlayingUIController : MonoBehaviour
 
 			//update combo
 			currCombo++;
+			
+			// Change Avatar Image
+			ChangeAvatarImage(trackNumber);
+
+			// Change Frame Color.
+			frame.color = frameColors[trackNumber];
 		}
 		else if (rank == Conductor.Rank.GOOD)
 		{
@@ -116,6 +138,12 @@ public class PlayingUIController : MonoBehaviour
 			
 			//update combo
 			currCombo++;
+
+			// Change Avatar Image.
+			ChangeAvatarImage(trackNumber);
+
+			// Change Frame Color.
+			frame.color = frameColors[trackNumber];
 		}
 		else   //bad or miss
 		{
@@ -124,9 +152,66 @@ public class PlayingUIController : MonoBehaviour
 
 			//update combo
 			currCombo = 0;
+
+			// Change avatar image.
+			ChangeAvatarImage(null);
+
+			// Change Frame Color.
+			frame.color = frameFailedColor;
 		}
 
 		UpdateScoreUI();
+	}
+
+	// If failed, imageIndex is null.
+	void ChangeAvatarImage(int? imageIndex)
+	{
+		float imageChangeDuration = ImageChangeDuration;
+
+		// Terminate the previous animation if it is still running.
+		if (changeImageCoroutine != null)
+		{
+			StopCoroutine(changeImageCoroutine);
+		}
+
+		if (imageIndex.HasValue)
+		{
+			// Change Image according to image indices.
+			avatar.sprite = currCharacterImage.beatImages[imageIndex.Value];
+		}
+		else
+		{
+			// Change to failed image.
+			avatar.sprite = currCharacterImage.failedImage;
+
+			// Failed would have double changed duration.
+			imageChangeDuration *= 2f;
+		}
+	
+		// Change back to the original image after certain amount of time.
+		changeImageCoroutine = StartCoroutine(ChangeAvatarImageCoroutine(imageChangeDuration));
+	}
+
+	IEnumerator ChangeAvatarImageCoroutine(float duration)
+	{
+		yield return new WaitForSeconds(duration);
+
+		// Change back to the original avatar image.
+		avatar.sprite = currCharacterImage.normalImage;
+	}
+
+	IEnumerator PopAvatarCoroutine()
+	{
+		float duration = Conductor.crotchet * PopAnimationCoefficient;
+
+		float i = 0f;
+		while (i <= 1f)
+		{
+			i += Time.deltaTime / duration;
+			avatar.transform.localScale = Vector2.Lerp(Vector2.one * PopAnimationScale, Vector2.one, i);
+			yield return null;
+		}
+
 	}
 
 	void UpdateScoreUI()
@@ -251,7 +336,6 @@ public class PlayingUIController : MonoBehaviour
 		i = 0f;
 		while (i <= 1f)
 		{
-			print(1);
 			i += Time.deltaTime / NumberAnimationDuration;
 
 			float newPerfection = Mathf.Lerp(0f, perfectionPercentage, i);

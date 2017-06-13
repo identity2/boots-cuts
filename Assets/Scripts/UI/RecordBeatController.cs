@@ -31,6 +31,7 @@ public class RecordBeatController : MonoBehaviour
 
 	//board
 	[HeaderAttribute("Record Board")]
+	public CharacterImageSet[] characterImageSets;
 	public Image boardMicIcon;
 	public Image boardMicInner;
 	public Image boardMicPlayIcon;
@@ -170,6 +171,9 @@ public class RecordBeatController : MonoBehaviour
 
 		//frame
 		frame.color = beatColors[index];
+
+		//avatar
+		picture.sprite = characterImageSets[SongInfoMessenger.Instance.characterIndex].beatImages[index];
 
 		//AudioClip
 		defaultClip = defaultClips[index];
@@ -433,5 +437,4 @@ public class RecordBeatController : MonoBehaviour
 	{
 		animating = false;
 	}
-	
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571d20d17d2fa4264825f7613fbf0bd0, type: 3}
+  m_Name: Cuts
+  m_EditorClassIdentifier: 
+  normalImage: {fileID: 21300000, guid: 21deb6552eb3e457c91efb9eb3293d0a, type: 3}
+  beatImages:
+  - {fileID: 21300000, guid: 2b10c47ab7f8443d2b7b5ea68bacc8ee, type: 3}
+  - {fileID: 21300000, guid: 376995a5743394d3fab92935bbefaf85, type: 3}
+  - {fileID: 21300000, guid: 98b3a011581cf4c20b809f989337cf17, type: 3}
+  - {fileID: 21300000, guid: 24898a0e8bef340278c25cfeecd0f48b, type: 3}
+  failedImage: {fileID: 21300000, guid: 68eb45396eea3458ea6dc7d010e86a17, type: 3}

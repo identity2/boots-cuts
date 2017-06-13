@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571d20d17d2fa4264825f7613fbf0bd0, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  normalImage: {fileID: 21300000, guid: c9a1aa6ce00044b429db5d9b5876b65c, type: 3}
+  beatImages:
+  - {fileID: 21300000, guid: 3f082fab1f68b4524974433576a0fdd5, type: 3}
+  - {fileID: 21300000, guid: 5f79a6573d91842948303f51c1806314, type: 3}
+  - {fileID: 21300000, guid: d4bd4881e33184ffeaa597467c540f92, type: 3}
+  - {fileID: 21300000, guid: e416b26d9673c4481bfced340e196f5f, type: 3}
+  failedImage: {fileID: 21300000, guid: 165638b0ea371496b84f74a1abd2c264, type: 3}
