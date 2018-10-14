@@ -12,15 +12,5 @@ MonoBehaviour:
   m_Name: Baroque
   m_EditorClassIdentifier: 
   songSets:
-  - easy: {fileID: 11400000, guid: 5ce2c448932a647c0a395f750c3ee6d3, type: 2}
-    hard: {fileID: 11400000, guid: 5b8504b64fe494f4bb8b99760d903d8b, type: 2}
   - easy: {fileID: 11400000, guid: 358942f4684d143f781a1c5e73bd399b, type: 2}
     hard: {fileID: 11400000, guid: babeb5b6095694786bdfdb88e6080bda, type: 2}
-  - easy: {fileID: 11400000, guid: 4e9d17050ed424642bc258e36213dc75, type: 2}
-    hard: {fileID: 11400000, guid: 4dad676d45a524b81ab3d2eb9985698f, type: 2}
-  - easy: {fileID: 11400000, guid: 07864ba09bed2413d99841f9157aa811, type: 2}
-    hard: {fileID: 11400000, guid: a257d633aae7c4f7dae02f1590b6b06c, type: 2}
-  - easy: {fileID: 11400000, guid: 2b290eab11ae24311a216dff93eb262b, type: 2}
-    hard: {fileID: 11400000, guid: 06663347f5792485481ce120c1c06865, type: 2}
-  - easy: {fileID: 11400000, guid: 514f507f76b6649e287edd0b4839d76f, type: 2}
-    hard: {fileID: 11400000, guid: ed93baa034870412689866d3faf6e6fc, type: 2}

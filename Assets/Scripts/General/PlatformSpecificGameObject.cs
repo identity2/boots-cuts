@@ -10,7 +10,7 @@ public class PlatformSpecificGameObject : MonoBehaviour
 
 	void Awake()
 	{
-		#if UNITY_EDITOR || UNITY_STANDALONE
+		#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 		if (!standalone) gameObject.SetActive(false);
 		#elif UNITY_ANDROID
 		if (!android) gameObject.SetActive(false);

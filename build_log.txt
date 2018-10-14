@@ -1,0 +1,212 @@
+Build Log:
+
+[2017.01.03]
+-完成TouchManager
+-處理Sprite的觸控
+-完成Soundboard大致的程式架構(用Event來驅動State的轉換，每個Game Object自行處理自己的State轉換)
+
+[2017.01.05]
+-發現Event Trigger好用之處，打算這個遊戲只用UI Touch就好
+-把Soundboard Slot都改成Image
+-完成AudioLoad & Save的class……一直有找不到的bug...結果發現是忘記把slots assign到inspector上……囧= =。
+
+[2017.01.08]
+-完成Slot Editor……，把原本存成.wav檔改成直接存二進位檔，檔案小了頗多，也比較快
+-用mic和Serialize AudioClip有夠麻煩的，快把我搞死了……，最後發現漏打一個”/“…………= =。還要幫XCode加plist的NSMicrophone什麼的，好煩。
+
+[2017.01.12]
+-大致完成Conductor class和MusicNode class，可以完美超精準在對的時間點對齊Finish Line！！！
+
+[2017.01.15]
+-用Prepare iOS for Recording選項讓錄音無延遲，不過要配合ForceIPhoneSpeaker Plug-in 讓聲音從正常的音響放出。
+
+[2017.01.17]
+-完成Object Pool class，但還沒實際套到Conductor & Music Node上
+-大致改了一下UI，用UI Layout，希望可以真正適應不同的裝置，而不是以黑邊取代
+-完成Record Beat Scene、Song Menu、Start Scene的大致排板
+
+[2017.01.19]
+-完成一些Graphics (Circle/Long Button Frame, Buttons Icons)
+-把Graphics套到Start Scene、Soundboard、Slot Editor，配上元元的背景圖(反白)，超漂亮的！！！
+
+[2017.01.20]
+-完成新的Soundboard，錄音不需要再開一個新的Scene了，直接在Soundboard錄！
+
+[2017.01.22]
+-打算分成兩個Project做，一個是Launchpad (Pro & Free)，另一個是Boots-Cuts。配好Launchpad的顏色了。
+
+[2017.01.24]
+-竟然把.dat打成.bat，不過好像沒什麼影響就是了……但還是改回.dat。Launchpad的Build Log正式分家。
+
+[2017.02.20]
+-修改SongInfo class，新建兩個Serializable Class: Track和Note，現在可以在Inspector輸入MusicNode了。
+-完成Multi-Times/Single MusicNode在Track中的行進、停留和移除(現在只需要處理Tap Event就好了！)
+
+[2017.02.27]
+-增加Tapping Sphere來控制玩家的輸入(抱括鍵盤&觸控)
+-畫好In Game背景！好漂亮~~~
+
+[2017.03.01]
+-畫好Music Node背景，In Game的美術大致完成(之後再弄Perfect, Good, Miss的動畫)
+
+[2017.03.03]
+-完成Perfect, Good, Bad Music Node的Code，之後弄一下動畫就好了
+-發現用Scriptable Object不太好編輯Song Info……再想想看可以用什麼做(或者就算了)
+
+[2017.03.06]
+-完成Record Beat UI、Animation，但還沒Apply上去……第一次覺得UI設計那麼難@@
+-大致設計好Programming架構(SongInfo傳遞方式)
+
+[2017.03.08]
+-更改Record Beat UI成(Main Menu -> 選一格 -> Record Beat)
+-UI程式碼好難規劃……
+-完成Record Beat (Main Menu -> Board) 的Transition動畫
+
+[2017.03.10]
+-重整Record Beat的程式碼，讓全部的Logic都放在一個Controller class (用類MVC Pattern)
+-狂打Main Menu和Record Beat Board的UI的程式碼，但還沒打完，也還沒Test
+
+[2017.03.13]
+-完成Record Beat的Controller
+
+[2017.03.15]
+-把遊戲從Portrait改成Landscape,重新設計UI佈局
+-調成只有Standalone會有Letterboxing
+
+[2017.03.17]
+-完成Songlist -> Beat Recording -> Playing　場景的資料傳送
+
+[2017.03.22]
+-完成Songlist的UI佈置
+-重佈置Beat Recording的UI，讓iPad和iPhone版都看起來很自然
+
+[2017.03.24]
+-完成Perfect, Good, Bad的Particle Systems
+-完成Tapping的Inner Circle Animation
+
+[2017.03.27]
+-完成Combo, Perfection計算的UI和他們的Particle Systems
+-設定最短錄音時間以改掉玩家在Recording Beat點按(錄音時間太短)會發生的Bug
+-完成Game Pause...快把我搞瘋了，把+=打成=……智障Bug擔誤我超久的= =
+
+[2017.03.29]
+-簡易Prototype完成 (用Spring)： 拍子對得到，Combo、Perfection沒問題！
+-微放寬Perfection、Good、Bad的準確度
+-增加：開始音樂前倒數3秒
+
+[2017.04.05]
+-唉！撞牆期……
+-完成Songlist Scene的Era Board <-> Song Board -> Song Info Board Transistion Animation
+-填完SongInfo (ScriptableObject) 的Title
+
+[2017.04.07]
+-請元元幫我畫角色
+-增加Song Scriptable Class的Fields
+-把Song Collection (Scripable Class) 改成Song Set (存<Easy, Hard>兩首曲子)
+-做Song Picking Controller：Configure Curr Song Board，並把程式大綱打完。
+
+[2017.04.10]
+-完成Songlist的左右Flipping
+-完成Song Info Board (顯示標題、作曲家、編曲家)
+-完成Song Difficulty Toggle
+
+[2017.04.12]
+-完成Character Choosing Board
+-完成Songlist -> Beat Recording的轉換
+
+[2017.04.14]
+-完成Song Complete的動畫和統計畫面
+
+[2017.04.21]
+-Build到iPhone上，再次修改Perfect, Good, Bad的Offset (並增加Mobile Multiplier, 讓手機版變簡單)
+    -Perfect: 0.15->0.25
+    -Good: 0.3->0.4
+    -Bad: 0.45->0.5
+    -Mobile Multiplier: 1->1.4
+-改Bug: Beat Record Board的Z軸改回0 (不會在iPhone上消失了)
+-增加Microphone Usage Description
+-完成Playing Scene的Retry和Home Button
+-修改Toggle的程式碼，讓其他程式可以在Awake()中呼叫ToggleBar.Initialize()
+
+[2017.04.24]
+-新增KeyboardInputManager，讓玩家可以自由決定按鍵設定 (限Standalone Platforms)
+-新增PlatformSpecificGameObject，在Compile Time決定什麼Game Object在哪個Platform下要隱藏
+-做Keyboard Configuration的UI
+-KeyboardInputMangager已經寫好了，但還沒測試，Keyboard Configuration UI也還沒實際功能
+
+[2017.04.26]
+-完成Keyboard Input Customize Configuration，並Test完
+
+[2017.05.23]
+-繞了一大圈，又回到這個Project了……本來想研究Godot Engine的，但還是等3.0再說好了，繼續Unity
+-開始畫Game Assets...大致設計完三個角色
+-畫完Boots的大頭貼，好累，好久沒畫畫了
+-等等還要開GSoC會議，好累……
+
+[2017.05.25]
+-做一點Winter音樂
+
+[2017.06.01]
+-畫完Dash、Cuts的大頭貼
+
+[2017.06.06]
+-把大頭貼放到Frame裡，再微調一下顏色。
+-完成所有角色的1,2動作
+
+[2017.06.08]
+-完成所有角色的3,４動作
+
+[2017.06.13]
+-完成角色Failed動作
+-完成角色隨Hit Beat變換動作
+-完成角色每一拍Pop一下
+
+[2017.06.20]
+-完成Fur Elise編曲
+
+To Do List:
+-Complete Winter
+-Complete Ode to Joy [8 bit]
+-Complete Trout [8 bit]
+-Complete Seguidilla [8 bit]
+-Complete The Blue Danube
+-Complete Gypsy Dance
+=Configure beats for 8 bit songs
+
+-Songs!!!
+
+Track Colors:
+#1: (138,  84, 255)
+#2: ( 74,  69, 255)
+#3: ( 84, 152, 248)
+#4: (188,  81, 255)
+
+Song List & Style: (Song ID)
+[Baroque]
+-( 0, 1) A I R O N T H E G S T R I N G (B A C H)  [vaporwave]
+-( 2, 3) Spring (Vivaldi) [8 bit]
+-( 4, 5) Jesu, Joy of Man's Desiring (Bach)
+-( 6, 7) Winter (Vivaldi)
+-( 8, 9) Minuet in G Major (Bach)
+-(10,11) Canon (Pachelbel)
+
+[Classic]
+-(12,13) For Elise (Beethoven)
+-(14,15) Turkish March (Mozart)
+-(16,17) Moonlight Sonata (Beethoven)
+-(18,19) Surprise Symphony (Haydn)
+-(20,21) Ode to Joy (Beethoven)
+
+[Romantic I]
+-(22,23) Hungary Dance (Brahms)
+-(24,25) The Blue Danube (Strauss)
+-(26,27) Nocturne (Chopin)
+-(28,29) Trout (Schubert)
+-(30,31) Wedding March (Mendelssohn)
+
+[Romantic II]
+-(32,33) Seguidilla (Bizet)
+-(34,35) O Mio Babbino Caro (Puccini)
+-(36,37) Je Veux Vivre (Gounod)
+-(38,39) O Dieu! Que de Dijoux! (Gounod)
+-(40,41) Gypsy Dance (Bizet)
